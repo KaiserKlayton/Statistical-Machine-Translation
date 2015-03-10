@@ -1,9 +1,9 @@
-## Statistical-Machine-Translation
+# Statistical-Machine-Translation
 Statistical machine translation with IBM Model 1.
 
 This package includes:
 
-#----- align.py -----
+**----- align.py -----**
 Contains the **IBM1** class:
 
 The **em_train()** method:
@@ -14,8 +14,8 @@ The **decode_training_data()** method:
 
 Tests functionality of decoder using training corpus itself. Not yet a fully functional decoder.
 
-#----- demo.py -----
+**----- demo.py -----**
 Demos the functionality of the aligner.
 
-#----- data -----
+**----- data -----**
 Hansards and Hansards toy.
