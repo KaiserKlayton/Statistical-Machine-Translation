@@ -7,11 +7,11 @@ This package includes:
 
 Contains the **IBM1** class:
 
-The **em_train()** method:
+* The **em_train()** method:
 
 Aligner training using expectation maximization.
 
-The **decode_training_data()** method:
+* The **decode_training_data()** method:
 
 Tests functionality of decoder using training corpus itself. Not yet a fully functional decoder.
 
