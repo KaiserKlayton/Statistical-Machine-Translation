@@ -35,7 +35,8 @@ from collections import defaultdict
 
 class IBM1:
 	"""
-	Initializes a translation model representing a distribution for p(s|t).
+	Wraps a translation model representing a distribution for p(s|t) using
+	IBM Model 1.
 	"""
 
 	def __init__(self, source, target):
@@ -44,7 +45,7 @@ class IBM1:
 		self.teetable = defaultdict(lambda: defaultdict(float))
 		self.ticker = 0
 		# INITIALIZE CO-OCCURANCES AS TEETABLE KEYS #
-		print "initializing translation model..."
+		print "INITIALIZING TRANSLATION MODEL..."
 		for (src, tar) in self._parallelize():
 			for i in src:
 				for j in tar:
@@ -61,6 +62,7 @@ class IBM1:
 		"""
 		Dumbly estimates and recursively maximizes the probabilities of p(s|t).
 		"""
+		print "TRAINING TRANSLATION MODEL..."
 		for i in range(steps):
 			print >> stderr, 'iteration {0}...'.format(self.ticker+1)
 			x = defaultdict(float)
@@ -81,6 +83,7 @@ class IBM1:
 					tar[i] = tar[i] / normalizer
 			# INCREMENT TICKER #
 			self.ticker += 1
+		self.ticker = 0
 
 	def _parallelize(self):
 		"""
@@ -94,3 +97,50 @@ class IBM1:
 			tar = tar.upper()
 			# ADD NULL WORD ON SOURCE SIDE #
 			yield ([None] + src.strip().split(), tar.strip().split())
+
+	def _decode(self, source, target):
+		"""
+	   	Returns the optimal alignment given a source sentence and a target 
+	   	sentence.
+	   	"""
+	   	if type(source) == str:
+	   		source = source.upper()
+	   		source = ([None] + source.strip().split())
+	   		target = self.target
+	   	print '----------DECODING PHRASE---------->'
+		for i in source:
+			top_prob = 0
+			top_align = -1
+	   		for (index, j) in enumerate(target):
+   				prob = self.teetable[i][j]
+	   			if prob > top_prob:
+	   				top_prob = prob
+	   				top_align = index	
+	   		yield i, target[top_align]
+
+	def decode_training_data(self):
+		"""
+		Output decoding results for the training data.
+		"""
+		for (src,tar) in self._parallelize():
+			yield self._decode(src,tar)
+
+	def show_decoding(self, alignments):
+		"""
+		Outputs the contents of a generator object as strings.
+		"""
+		for i in alignments:
+			for j in i:
+				for k in j:
+					print k,
+				print
+
+class HMM:
+	"""
+	Wraps a translation model representing a distribution for p(s|t) using HMMs.
+	"""
+
+	def __init__(self, source, target):
+		self.source = source
+		self.target = target
+		self.teetable = defaultdict(lambda: defaultdict(float))
