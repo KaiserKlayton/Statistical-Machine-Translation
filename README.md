@@ -5,8 +5,6 @@ This package includes:
 
 **----- align.py -----**
 
-Contains:
-
 The **IBM1** class:
 
 * The **em_train( )** method: Aligner training using expectation maximization.
