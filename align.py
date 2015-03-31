@@ -192,7 +192,7 @@ class LanguageModel:
 		print "ESTIMATING TRIGRAM PROBABILITIES..."
 		for a, a_index in self.lm.items():
 			for b, b_index in a_index.items():
-				total = sum(b_index.values())
+				total = float(sum(b_index.values()))
 				for c in b_index.keys():
-					b_index[c] /= total
+					b_index[c] /= float(total)
 		print "DONE.\n"
