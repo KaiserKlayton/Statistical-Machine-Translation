@@ -17,7 +17,7 @@ The **LanguageModel** class:
 
 * The **estimate_probs( )** method: Estimates the probability of a trigram.
 
------ demo.py -----
+**----- demo.py -----**
 
 Demos the functionality of the aligner (translation modeling and language modeling).
 
