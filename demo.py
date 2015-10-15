@@ -8,8 +8,8 @@ from align import IBM1, LanguageModel
 if __name__ == '__main__':
 
 ################## TRAIN TRANSLATION MODEL ##################
-	my_model = IBM1('/Users/clayton/Scripts/SMT/data/hansardstoy.f', \
-					'/Users/clayton/Scripts/SMT/data/hansardstoy.e')
+	my_model = IBM1('data/hansardstoy.f', \
+					'data/hansardstoy.e')
 	my_model.em_train(10)
 
 	# TEST OUTPUT #
@@ -21,7 +21,7 @@ if __name__ == '__main__':
 	print my_model['BILINGUISME']['BILINGUALISM']
 
 ################## TRAIN LANGUAGE MODEL ##################
-	my_lm = LanguageModel('/Users/clayton/Scripts/SMT/data/hansards.e')
+	my_lm = LanguageModel('data/hansards.e')
 	my_lm.estimate_probs()
 
 	# TEST OUTPUT #
