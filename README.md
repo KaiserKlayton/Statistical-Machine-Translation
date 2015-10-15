@@ -23,4 +23,5 @@ Demos the functionality of the aligner (translation modeling and language modeli
 
 **----- data -----**
 
-Hansards and Hansards Toy.
+Hansards.
+Hansards Toy.
