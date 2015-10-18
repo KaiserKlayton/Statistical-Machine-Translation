@@ -75,6 +75,6 @@ the teetable is updated with the translation model probability. This is accompli
 ### Thirdly
 the language model is initialized. In this case of this program, this is a trigram model. First, trigram occurances are collected with _get_trigrams(), and then passed on to estimate_probs(), which returns traigram probabilities.
 
-## For the Future
+## Summary
 obviously, the IBM1 falls short in that it so dumbly maximizes probablities during the estimation-maximization loop. However, it still is very important for machine translation systems because it calculates p(target|source) which is used in other systems and serves as a basis for many othermore complex translation systems. To understand IBM1 is to understand the basis of the Noisy Model for machine translation.
 
