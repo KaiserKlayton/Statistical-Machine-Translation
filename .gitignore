@@ -1,4 +1,6 @@
 *.pyc
-data/samp
-decode.py
+
+./data/samp
+
+./decode.py
 
